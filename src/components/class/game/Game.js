@@ -1,4 +1,6 @@
 import { Component } from "react";
+import PlayerChoice from "../../functional/playerchoice/PlayerChoice";
+import Play from "../../functional/play/Play"
 
 class Game extends Component {
   constructor(props) {
@@ -37,29 +39,32 @@ class Game extends Component {
   getComPlay(comPlay) {
     let counter = 0;
     let variabile = 0;
-    comPlay = Math.floor(Math.random(1) * 4);
+    let choices = ['rock', 'paper', 'scissors']
+    this.comPlay = Math.floor(Math.random() * 3);
 
     if (variabile === comPlay) {
       counter++;
       if (counter === 2) {
-        comPlay = this.getcomPlay(comPlay);
+        this.comPlay = this.getcomPlay(comPlay);
       } else {
         counter = 0;
       }
     }
-    variabile = comPlay;
+    
+    variabile = this.comPlay;
+    this.comPlay = choices[this.comPlay]
     return comPlay;
   }
 
   game(label) {
-    let playerPlay = label;
+    this.playerPlay = label;
     this.comPlay = this.getComPlay();
-    console.log(`Player gioca ${playerPlay}, il computer gioca ${comPlay}`);
+    console.log(`Player gioca ${this.playerPlay}, il computer gioca ${this.comPlay}`);
 
     this.playerWinsCount =
-      this.playerWinsCount + WINS_AND_LOSSES[playerPlay][comPlay][1];
+      this.playerWinsCount + this.rules[this.playerPlay][this.comPlay][1];
     this.comWinsCount =
-      this.comWinsCount + WINS_AND_LOSSES[playerPlay][comPlay][2];
+      this.comWinsCount + this.rules[this.playerPlay][this.comPlay][2];
 
     if (this.playerWinsCount === 3) {
       console.log("Player wins");
