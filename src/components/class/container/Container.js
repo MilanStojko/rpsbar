@@ -13,26 +13,53 @@ class Container extends Component {
     //dichiarazione stati
     this.state = {
       playerName: "",
-      playerWins: "",
+      playerWins: 0,
+      homeView: true,
+      playerWon: false,
+      insertedName: false,
     };
   }
 
   getName(par1) {
     this.setState({
       playerName: par1,
+      homeView: false,
+      insertedName: true,
     });
+  }
+
+  getWins(win) {
+    if (win === true) {
+      this.setState({
+        playerWon: true,
+      });
+    }
   }
 
   render() {
     return (
       <>
         <Title />
-        <Home callback={this.getName.bind(this)} />
-        <Game />
-        <Result />
+        {this.state.homeView === true && (
+          <Home callback={this.getName.bind(this)} />
+        )}
+
+        {this.state.insertedName === true && (
+          <Game callback={this.getWins.bind(this)} />
+        )}
+        {this.state.playerWon === true && <Result win={""} img={""} />}
+
         <Leaderboard />
         <Footer />
       </>
+    );
+  }
+
+  startGameComponent() {
+    return (
+      <div>
+        <Game callback={this.getWins.bind(this)} />
+      </div>
     );
   }
 }
