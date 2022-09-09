@@ -1,4 +1,7 @@
-function Home() {
+import Input from "../../functional/Input/Input";
+import Button from "../../functional/button/Button";
+
+function Home(props) {
   let newName = "";
 
   function getName(event) {

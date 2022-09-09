@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import Container from "./components/class/container/container";
+import Container from "./components/class/container/Container.js";
 import "./App.css";
 
 function App() {

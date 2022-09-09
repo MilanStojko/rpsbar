@@ -1,4 +1,4 @@
-function Button() {
+function Button(props) {
   function handleClick() {
     props.callback();
   }
