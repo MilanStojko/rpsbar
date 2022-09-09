@@ -6,7 +6,7 @@ function Input(props) {
   return (
     <>
       <div>
-        <lable>
+        <label>
           {props.lable}
           <input
             id="name"
@@ -15,7 +15,7 @@ function Input(props) {
             placeholder={props.placeholder}
             onChange={handleChange}
           ></input>
-        </lable>
+        </label>
       </div>
     </>
   );
