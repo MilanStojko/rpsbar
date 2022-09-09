@@ -1,4 +1,10 @@
+import Button from "../button/Button"
+
 function Play() {
-  return;
+  return(
+    <>
+      <Button />
+    </>
+  );
 }
 export default Play;
