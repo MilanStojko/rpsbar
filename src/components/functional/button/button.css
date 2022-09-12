@@ -1,0 +1,16 @@
+.baseButton {
+  background-color: #db504a;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  border: 0px;
+}
+
+.baseButton:hover {
+    background-color:#dd817e
+}
+
+.baseButton:active {
+    background-color:#7e2f2c
+}

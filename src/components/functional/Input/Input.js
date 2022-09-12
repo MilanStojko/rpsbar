@@ -1,4 +1,5 @@
 //props == type, lable, type, callback
+import './input.css'
 function Input(props) {
   function handleChange(event) {
     props.callback(event);
@@ -9,6 +10,7 @@ function Input(props) {
         <label>
           {props.lable}
           <input
+            className={"baseInput"}
             id="name"
             name="name"
             type={props.type}
