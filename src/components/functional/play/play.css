@@ -27,9 +27,39 @@
   .choice img{
       max-width: 300px;
   }
+  .winner {
+    background-color: #4F6D7A;
+    padding: 20px;
+    border-radius: 10px;
+    color:white;
+    font-size: 12px
+  }
+
 }
 @media screen and (min-width: 600px) {
+  .winner {
+    background-color: #4F6D7A;
+    padding: 20px;
+    border-radius: 10px;
+    color:white;
+    font-size: 16px
+  }
  
 }
 @media screen and (min-width: 800px) {
+  .winner {
+    background-color: #4F6D7A;
+    padding: 20px;
+    border-radius: 10px;
+    color:white;
+    font-size: 18px
+  }
+}
+
+.winner {
+  background-color: #4F6D7A;
+  padding: 20px;
+  border-radius: 10px;
+  color:white;
+  font-size: 20px
 }

@@ -14,14 +14,17 @@ function Play(props) {
 
   const winMap = {
     player: {
-      rock: "Il gusto della birra vince su tutto",
-      paper: "Il gusto delicato del vino è superiore",
-      scissors: "Il gusto del negroni la spunta",
+      rock: "Il gusto della birra regna supremo!",
+      paper:
+        "Il gusto delicato del vino, così superiore ad una semplice birra!",
+      scissors:
+        "Nemmeno cento bicchieri di vino potrebbero raggiungere questo tasso alcolemico!",
     },
     com: {
-      rock: "Qualcosa hai perso contro il vino",
-      paper: "Qualcosa hai perso contro il negroni",
-      scissors: "Qualcosa hai perso contro la birra",
+      rock: "L'odore pungente del vino fa scappare via i tuoi luppoli!",
+      paper: "Un buon negroni sciacqua via il vino come fosse acqua!",
+      scissors:
+        "Un singolo negroni cosa può contro la schiacciante forza numerica di cento birre?",
     },
     tie: {
       rock: "Un brindisi alla birra! Pareggio!",
@@ -44,9 +47,11 @@ function Play(props) {
     <div>
       <div className="play">
         <img src={gallery[player]} className={"image"} />
-        {winMap[winner][player]}
-        <br />
-        Il punteggio è: {props.playerWinsCount} a {props.comWinsCount}
+        <div className="winner">
+          {winMap[winner][player]}
+          <br />
+          Il punteggio è: {props.playerWinsCount} a {props.comWinsCount}!
+        </div>
         <img src={gallery[com]} className={"image"} />
         <br />
       </div>
