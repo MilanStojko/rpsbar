@@ -1,3 +1,5 @@
+import Button from "../button/Button";
+
 function Leaderboard(props) {
   let newLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
 
@@ -10,7 +12,19 @@ function Leaderboard(props) {
     }
     return 0;
   }
-  newLeaderboard.sort(compare);
+  if (newLeaderboard !== []) newLeaderboard.sort(compare);
+
+  function playerNow(element) {
+    if (element.name === props.playerNow) {
+      return <span className="thisPlayer">{element.name}</span>;
+    } else {
+      return <span className="genericPlayer">{element.name}</span>;
+    }
+  }
+
+  function restartGame() {
+    props.callback();
+  }
 
   return (
     <>
@@ -25,18 +39,13 @@ function Leaderboard(props) {
             );
           })}
         <div>
-          <h1>ANCORA NESSUNO IN CLASSIFICA</h1>
+          {newLeaderboard === [] && <h1>ANCORA NESSUNO IN CLASSIFICA</h1>}
+        </div>
+        <div>
+          <Button callback={restartGame} />
         </div>
       </div>
     </>
   );
-
-  function playerNow(element) {
-    if (element.name === props.playerNow) {
-      return <span className="thisPlayer">{element.name}</span>;
-    } else {
-      return <span className="genericPlayer">{element.name}</span>;
-    }
-  }
 }
 export default Leaderboard;

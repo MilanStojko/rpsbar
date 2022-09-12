@@ -38,12 +38,13 @@ class Game extends Component {
   //Function returns a number between 1 and 3. comPlay is used in the recursive function
   getComPlay(comRoll = 0) {
     let counter = 0;
-    let variabile = 0;
+    let flag = 0;
     let choices = ["rock", "paper", "scissors"];
 
     comRoll = Math.floor(Math.random() * 3);
 
-    if (variabile === comRoll) {
+    if (flag === comRoll) {
+      flag = comRoll;
       counter++;
       if (counter === 2) {
         this.comRoll = this.getcomPlay(comRoll);
@@ -52,7 +53,7 @@ class Game extends Component {
       }
     }
 
-    variabile = comRoll;
+    flag = comRoll;
     this.comPlay = choices[comRoll];
   }
 

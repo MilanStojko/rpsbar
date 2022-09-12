@@ -16,7 +16,7 @@ function Home(props) {
 
   return (
     <>
-      <div className="homec">
+      <div>
         <Input
           placeholder={"insert name"}
           lable={"Who is the brave challenger"}

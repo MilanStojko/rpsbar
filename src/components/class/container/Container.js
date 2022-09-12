@@ -14,6 +14,7 @@ import "./container.css";
 class Container extends Component {
   constructor(props) {
     super(props);
+    this.newPlayer = {};
 
     //dichiarazione stati
     this.state = {
@@ -44,16 +45,18 @@ class Container extends Component {
       let oldLeaderboard =
         JSON.parse(localStorage.getItem("leaderboard")) || [];
 
-      oldLeaderboard.forEach((element) => {
+      oldLeaderboard.foreach((element) => {
         if (element.name === this.state.playerName) {
           element.score = element.score + 1;
+        } else {
+          this.newPlayer = {
+            name: this.state.playerName,
+            score: resolveWins,
+          };
         }
       });
-      let newPlayer = {
-        name: this.state.playerName,
-        score: resolveWins,
-      };
-      oldLeaderboard.push(newPlayer);
+      oldLeaderboard.push(this.newPlayer);
+
       localStorage.setItem("leaderboard", JSON.stringify(oldLeaderboard));
     }
     this.setState({
@@ -71,12 +74,22 @@ class Container extends Component {
     });
   }
 
+  restartGame() {
+    this.setState({
+      homeView: true,
+      gameFinished: false,
+      playerWon: false,
+      insertedName: false,
+      leaderboard: false,
+    });
+  }
+
   render() {
     return (
       <>
         <Title className="title" />
         {this.state.homeView === true && (
-          <Home className="home" callback={this.getName.bind(this)} />
+          <Home className={"home"} callback={this.getName.bind(this)} />
         )}
 
         {this.state.insertedName === true && (
@@ -102,6 +115,7 @@ class Container extends Component {
           <Leaderboard
             className="leaderboard"
             playerNow={this.state.playerName}
+            callback={this.restartGame.bind(this)}
           />
         )}
 

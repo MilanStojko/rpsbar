@@ -11,4 +11,7 @@
         width: 480px;
         height: 100px;
     }
+    .game{
+        background-color: red;
+    }
 }
