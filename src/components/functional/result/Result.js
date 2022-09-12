@@ -6,7 +6,7 @@ function Result(props) {
   }
 
   return (
-    <>
+    <div>
       <div>
         <h1>{props.win} HA VINTO LA BATTAGLIA</h1>
         <img src={props.img}></img>
@@ -14,7 +14,7 @@ function Result(props) {
       <div>
         <Button callback={sendLeaderbord} />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -45,16 +45,16 @@ class Container extends Component {
       let oldLeaderboard =
         JSON.parse(localStorage.getItem("leaderboard")) || [];
 
-      oldLeaderboard.foreach((element) => {
+      oldLeaderboard.map((element) => {
         if (element.name === this.state.playerName) {
           element.score = element.score + 1;
-        } else {
-          this.newPlayer = {
-            name: this.state.playerName,
-            score: resolveWins,
-          };
         }
       });
+
+      this.newPlayer = {
+        name: this.state.playerName,
+        score: resolveWins,
+      };
       oldLeaderboard.push(this.newPlayer);
 
       localStorage.setItem("leaderboard", JSON.stringify(oldLeaderboard));
@@ -87,7 +87,7 @@ class Container extends Component {
   render() {
     return (
       <>
-        <Title className="title" />
+        <Title className={"title"} />
         {this.state.homeView === true && (
           <Home className={"home"} callback={this.getName.bind(this)} />
         )}

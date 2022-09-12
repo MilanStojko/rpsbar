@@ -1,6 +1,17 @@
+
+@media screen and (min-width: 480px) {
+    .header{
+        background-color: #fcdb7a;
+        width: 100vw;
+        display: flex;
+        justify-content: flex;
+        align-items: center;
+    }
+}
+
 .header{
     background-color: #fcdb7a;
-    display: flex;
-    align-items: center;
+    width: 100vw;
     justify-content: center;
+    align-items: center;
 }
