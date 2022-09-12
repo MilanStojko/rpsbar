@@ -59,12 +59,14 @@ class Container extends Component {
     this.setState({
       playerWon: resolvePlayer,
       playerWins: resolveWins,
+      insertedName: false,
       gameFinished: true,
     });
   }
 
   getLeaderboard() {
     this.setState({
+      gameFinished: false,
       leaderboard: true,
     });
   }

@@ -84,11 +84,15 @@ class Game extends Component {
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
       this.playerWon = true;
+      this.props.callback(this.playerWon);
+      this.handlePlay();
     } else if (this.comWinsCount === 3) {
       console.log("COM wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
       this.playerWon = false;
+      this.props.callback(this.playerWon);
+      this.handlePlay();
     } else {
     }
     state.displayPlay = true;
@@ -101,9 +105,9 @@ class Game extends Component {
   }
 
   handlePlay() {
-    let state = this.state
-    state.displayPlay = false
-    this.setState(state)
+    let state = this.state;
+    state.displayPlay = false;
+    this.setState(state);
   }
 
   handleCallback() {
