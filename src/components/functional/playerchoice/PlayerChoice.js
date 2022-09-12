@@ -1,17 +1,15 @@
-import { checkPropTypes } from "prop-types";
-import Button from "../button/Button";
+import Choices from "../choices/Choices";
 
 function PlayerChoice(props) {
-
-  function handleCallback (label){
-    props.callback(label)
+  function handleCallback(label) {
+    props.callback(label);
   }
 
   return (
     <>
-      <Button img = {props.img} callback={handleCallback} />
-      <Button img = {props.img} callback={handleCallback}/>
-      <Button img = {props.img} callback={handleCallback}/>
+      <Choices label="rock" callback={handleCallback} />
+      <Choices label="paper" callback={handleCallback} />
+      <Choices label="scissors" callback={handleCallback} />
     </>
   );
 }

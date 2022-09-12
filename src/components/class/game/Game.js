@@ -10,7 +10,7 @@ class Game extends Component {
     this.comPlay = null;
     this.playerWinsCount = 0;
     this.comWinsCount = 0;
-    this.playerWon = ""
+    this.playerWon = "";
     this.winner = "";
     this.rules = {
       rock: {
@@ -84,12 +84,12 @@ class Game extends Component {
       console.log("Player wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
-      this.playerWon = true
+      this.playerWon = true;
     } else if (this.comWinsCount === 3) {
       console.log("COM wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
-      this.playerWon = false
+      this.playerWon = false;
     } else {
     }
   }
@@ -110,7 +110,11 @@ class Game extends Component {
       <>
         <button onClick={this.consoleLogging.bind(this)} />
         <PlayerChoice callback={this.handlePlayerChoice.bind(this)} />
-        <Play player={this.playerPlay} com={this.comPlay} winner={this.winner} />
+        <Play
+          player={this.playerPlay}
+          com={this.comPlay}
+          winner={this.winner}
+        />
       </>
     );
   }
