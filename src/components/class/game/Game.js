@@ -88,7 +88,6 @@ class Game extends Component {
       this.props.callback(this.playerWon);
       this.handlePlay();
     } else if (this.comWinsCount === 3) {
-      console.log("COM wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
       this.playerWon = false;
@@ -127,6 +126,8 @@ class Game extends Component {
             com={this.comPlay}
             winner={this.winner}
             playerName={this.props.playerName}
+            playerWinsCount={this.playerWinsCount}
+            comWinsCount={this.comWinsCount}
           />
         )}
       </div>

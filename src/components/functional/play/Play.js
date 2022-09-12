@@ -43,7 +43,7 @@ function Play(props) {
   return (
     <>
       <img src={gallery[props.player]} className={"image"} />
-      {winMap[winner][player]}
+      {winMap[winner][player]}<br/>Il punteggio è: {props.playerWinsCount} a {props.comWinsCount}
       <img src={gallery[props.com]} className={"image"} />
       <br />
       <Button callback={handleCallback} label={"Continua"} />
