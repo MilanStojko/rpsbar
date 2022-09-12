@@ -10,6 +10,8 @@ class Game extends Component {
     this.comPlay = null;
     this.playerWinsCount = 0;
     this.comWinsCount = 0;
+    this.playerWon = ""
+    this.winner = "";
     this.rules = {
       rock: {
         rock: ["tie", 0, 0],
@@ -70,43 +72,48 @@ class Game extends Component {
     this.comWinsCount =
       this.comWinsCount + this.rules[this.playerPlay][this.comPlay][2];
 
+    if (this.rules[this.playerPlay][this.comPlay][1] === 1) {
+      this.winner = "player";
+    } else if (this.rules[this.playerPlay][this.comPlay][2]) {
+      this.winner = "com";
+    } else {
+      this.winner = "tie";
+    }
+
     if (this.playerWinsCount === 3) {
       console.log("Player wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
+      this.playerWon = true
     } else if (this.comWinsCount === 3) {
       console.log("COM wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
+      this.playerWon = false
     } else {
     }
   }
 
-  handleGame(play) {
-    this.playerPlay = play;
-    this.game(this.playerPlay);
+  handlePlayerChoice(play) {
+    let playerChoice = play;
+    this.game(playerChoice);
   }
 
-  consoleLogging() {
-    this.game();
-    console.log("this.playerPlay", this.playerPlay);
-  }
+  consoleLogging() {}
 
   handleCallback() {
-    this.props.callback
+    this.props.callback(this.playerWon);
   }
 
   render() {
     return (
       <>
         <button onClick={this.consoleLogging.bind(this)} />
-        <PlayerChoice />
-        <Play game={this.handleGame.bind(this)} />
+        <PlayerChoice callback={this.handlePlayerChoice.bind(this)} />
+        <Play player={this.playerPlay} com={this.comPlay} winner={this.winner} />
       </>
     );
   }
 }
 
 export default Game;
-
-//Andrà ancora fatto PlayerChoice e Play, probabilmente darà errore.
