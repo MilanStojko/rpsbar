@@ -1,10 +1,15 @@
 import { Component } from "react";
+
+//import di componenenti
 import Home from "../../hook/home/Home";
 import Title from "../../functional/title/Title";
 import Game from "../game/Game";
 import Result from "../../functional/result/Result";
 import Leaderboard from "../../functional/leaderboard/Leaderboard";
 import Footer from "../../functional/footer/Footer";
+
+//import di css
+import "./container.css";
 
 class Container extends Component {
   constructor(props) {
@@ -36,6 +41,20 @@ class Container extends Component {
     if (win === true) {
       resolvePlayer = true;
       resolveWins = 1;
+      let oldLeaderboard =
+        JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+      oldLeaderboard.forEach((element) => {
+        if (element.name === this.state.playerName) {
+          element.score = element.score + 1;
+        }
+      });
+      let newPlayer = {
+        name: this.state.playerName,
+        score: resolveWins,
+      };
+      oldLeaderboard.push(newPlayer);
+      localStorage.setItem("leaderboard", JSON.stringify(oldLeaderboard));
     }
     this.setState({
       playerWon: resolvePlayer,
@@ -75,7 +94,9 @@ class Container extends Component {
             img={""}
           />
         )}
-        {this.state.leaderboard === true && <Leaderboard />}
+        {this.state.leaderboard === true && (
+          <Leaderboard playerNow={this.state.playerName} />
+        )}
 
         <Footer />
       </>
