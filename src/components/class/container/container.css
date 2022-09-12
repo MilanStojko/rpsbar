@@ -1,5 +1,14 @@
+*{
+    box-sizing: border-box;
+    margin: 0, auto;
+}
 @media screen and (max-width: 480px) {
     body{
         background-color: aqua;
+    }
+    .home{
+        background-color: red;
+        width: 480px;
+        height: 100px;
     }
 }

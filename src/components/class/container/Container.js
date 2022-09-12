@@ -74,16 +74,17 @@ class Container extends Component {
   render() {
     return (
       <>
-        <Title />
+        <Title className="title" />
         {this.state.homeView === true && (
-          <Home callback={this.getName.bind(this)} />
+          <Home className="home" callback={this.getName.bind(this)} />
         )}
 
         {this.state.insertedName === true && (
-          <Game callback={this.getEndGame.bind(this)} />
+          <Game className="game" callback={this.getEndGame.bind(this)} />
         )}
         {this.state.gameFinished === true && this.state.playerWon === true && (
           <Result
+            className="result"
             callback={this.getLeaderboard.bind(this)}
             win={"IL CAMPIONE BEVITORE"}
             img={""}
@@ -91,13 +92,17 @@ class Container extends Component {
         )}
         {this.state.gameFinished === true && this.state.playerWon === false && (
           <Result
+            className="result"
             callback={this.getLeaderboard.bind(this)}
             win={"L'AMBASCIATORE DELLA SOBRIETÀ"}
             img={""}
           />
         )}
         {this.state.leaderboard === true && (
-          <Leaderboard playerNow={this.state.playerName} />
+          <Leaderboard
+            className="leaderboard"
+            playerNow={this.state.playerName}
+          />
         )}
 
         <Footer />

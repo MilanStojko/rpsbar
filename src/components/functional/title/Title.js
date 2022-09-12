@@ -1,8 +1,11 @@
+import morraTitleNew from "../../../assets/media/img/morraTitleNew.png";
+import "./title.css";
+
 function Title() {
   return (
     <>
-      <div>
-        <h1>MorraBirra</h1>
+      <div className="header">
+        <img src={morraTitleNew}></img>
       </div>
     </>
   );
