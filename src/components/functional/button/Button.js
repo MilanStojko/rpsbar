@@ -11,13 +11,11 @@ function Button(props) {
   }
 
   return (
-    <>
-      <div>
-        <button onClick={handleClick} className={"baseButton"}>
-          {props.label}
-        </button>
-      </div>
-    </>
+    <div>
+      <button onClick={handleClick} className={"baseButton"}>
+        {props.label}
+      </button>
+    </div>
   );
 }
 

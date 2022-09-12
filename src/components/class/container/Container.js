@@ -37,6 +37,7 @@ class Container extends Component {
   }
 
   getEndGame(win) {
+    let isAlreadyPresent = false;
     let resolveWins = this.state.playerWins;
     let resolvePlayer = this.state.playerWon;
     if (win === true) {
@@ -48,14 +49,16 @@ class Container extends Component {
       oldLeaderboard.map((element) => {
         if (element.name === this.state.playerName) {
           element.score = element.score + 1;
+          isAlreadyPresent = true;
         }
       });
-
-      this.newPlayer = {
-        name: this.state.playerName,
-        score: resolveWins,
-      };
-      oldLeaderboard.push(this.newPlayer);
+      if (!isAlreadyPresent) {
+        this.newPlayer = {
+          name: this.state.playerName,
+          score: resolveWins,
+        };
+        oldLeaderboard.push(this.newPlayer);
+      }
 
       localStorage.setItem("leaderboard", JSON.stringify(oldLeaderboard));
     }

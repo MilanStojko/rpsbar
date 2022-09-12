@@ -1,14 +1,16 @@
 import Button from "../button/Button";
 
+import "./leaderboard.css";
+
 function Leaderboard(props) {
   let newLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
 
   function compare(a, b) {
     if (a.score < b.score) {
-      return -1;
+      return 1;
     }
     if (a.score > b.score) {
-      return 1;
+      return -1;
     }
     return 0;
   }
@@ -27,25 +29,25 @@ function Leaderboard(props) {
   }
 
   return (
-    <>
+    <div className="table">
       <div>
         {newLeaderboard !== [] &&
           newLeaderboard.map((element, key) => {
             return (
-              <div key={key}>
-                <span>{playerNow(element)}</span>
-                <span>{element.score}</span>
+              <div key={key} className="container">
+                <span className="name">{playerNow(element)}</span>
+                <span className="score">{element.score}</span>
               </div>
             );
           })}
         <div>
           {newLeaderboard === [] && <h1>ANCORA NESSUNO IN CLASSIFICA</h1>}
         </div>
-        <div>
-          <Button callback={restartGame} />
-        </div>
       </div>
-    </>
+      <div className="restartButton">
+        <Button callback={restartGame} />
+      </div>
+    </div>
   );
 }
 export default Leaderboard;
