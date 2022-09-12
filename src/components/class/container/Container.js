@@ -15,8 +15,10 @@ class Container extends Component {
       playerName: "",
       playerWins: 0,
       homeView: true,
+      gameFinished: false,
       playerWon: false,
       insertedName: false,
+      leaderboard: false,
     };
   }
 
@@ -28,12 +30,24 @@ class Container extends Component {
     });
   }
 
-  getWins(win) {
+  getEndGame(win) {
+    let resolveWins = this.state.playerWins;
+    let resolvePlayer = this.state.playerWon;
     if (win === true) {
-      this.setState({
-        playerWon: true,
-      });
+      resolvePlayer = true;
+      resolveWins = 1;
     }
+    this.setState({
+      playerWon: resolvePlayer,
+      playerWins: resolveWins,
+      gameFinished: true,
+    });
+  }
+
+  getLeaderboard() {
+    this.setState({
+      leaderboard: true,
+    });
   }
 
   render() {
@@ -45,11 +59,24 @@ class Container extends Component {
         )}
 
         {this.state.insertedName === true && (
-          <Game callback={this.getWins.bind(this)} />
+          <Game callback={this.getEndGame.bind(this)} />
         )}
-        {this.state.playerWon === true && <Result win={""} img={""} />}
+        {this.state.gameFinished === true && this.state.playerWon === true && (
+          <Result
+            callback={this.getLeaderboard.bind(this)}
+            win={"IL CAMPIONE BEVITORE"}
+            img={""}
+          />
+        )}
+        {this.state.gameFinished === true && this.state.playerWon === false && (
+          <Result
+            callback={this.getLeaderboard.bind(this)}
+            win={"L'AMBASCIATORE DELLA SOBRIETÀ"}
+            img={""}
+          />
+        )}
+        {this.state.leaderboard === true && <Leaderboard />}
 
-        <Leaderboard />
         <Footer />
       </>
     );
@@ -58,7 +85,7 @@ class Container extends Component {
   startGameComponent() {
     return (
       <div>
-        <Game callback={this.getWins.bind(this)} />
+        <Game callback={this.getEndGame.bind(this)} />
       </div>
     );
   }
