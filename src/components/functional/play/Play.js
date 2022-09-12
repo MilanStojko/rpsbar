@@ -1,9 +1,15 @@
+import { checkPropTypes } from "prop-types";
 import Button from "../button/Button"
 
-function Play() {
+function Play(props) {
+
+  function handleCallback(){
+    props.callback()
+  }
+
   return(
     <>
-      <Button />
+      <Button callback={handleCallback}/>
     </>
   );
 }

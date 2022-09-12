@@ -32,8 +32,6 @@ class Game extends Component {
 
     this.state = {
       displayPlay: false,
-      playerPoints: 0,
-      comPoints: 0,
     };
   }
 
@@ -59,6 +57,7 @@ class Game extends Component {
   }
 
   game(label = "scissors") {
+    let state = this.state;
     this.playerPlay = label;
     this.getComPlay(this.comPlay);
     console.log("Questo è comPlay", this.comPlay);
@@ -74,7 +73,7 @@ class Game extends Component {
 
     if (this.rules[this.playerPlay][this.comPlay][1] === 1) {
       this.winner = "player";
-    } else if (this.rules[this.playerPlay][this.comPlay][2]) {
+    } else if (this.rules[this.playerPlay][this.comPlay][2] === 1) {
       this.winner = "com";
     } else {
       this.winner = "tie";
@@ -92,6 +91,8 @@ class Game extends Component {
       this.playerWon = false;
     } else {
     }
+    state.displayPlay = true;
+    this.setState(state);
   }
 
   handlePlayerChoice(play) {
@@ -99,7 +100,11 @@ class Game extends Component {
     this.game(playerChoice);
   }
 
-  consoleLogging() {}
+  handlePlay() {
+    let state = this.state
+    state.displayPlay = false
+    this.setState(state)
+  }
 
   handleCallback() {
     this.props.callback(this.playerWon);
@@ -108,13 +113,16 @@ class Game extends Component {
   render() {
     return (
       <>
-        <button onClick={this.consoleLogging.bind(this)} />
-        <PlayerChoice callback={this.handlePlayerChoice.bind(this)} />
-        <Play
-          player={this.playerPlay}
-          com={this.comPlay}
-          winner={this.winner}
-        />
+        {this.state.displayPlay === false ? ( //SE NON VA POTREBBE ESSERE QUESTO
+          <PlayerChoice callback={this.handlePlayerChoice.bind(this)} />
+        ) : (
+          <Play
+            callback={this.handlePlay.bind(this)}
+            player={this.playerPlay}
+            com={this.comPlay}
+            winner={this.winner}
+          />
+        )}
       </>
     );
   }
