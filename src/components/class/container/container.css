@@ -13,16 +13,4 @@ body{
     align-items: center;
     justify-content: center;
 }
-.result{
-    
-}
 
-@media screen and (max-width: 480px) {
-    .home{
-        width: 480px;
-    }
-    .title img{
-        width: 400px;
-    }
-
-}

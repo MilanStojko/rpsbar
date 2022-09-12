@@ -97,10 +97,11 @@ class Container extends Component {
         )}
         {this.state.gameFinished === true && this.state.playerWon === true && (
           <Result
-            className="result"
+            className={"result"}
             callback={this.getLeaderboard.bind(this)}
+            label={"vai alla leaderboard"}
             win={"IL CAMPIONE BEVITORE"}
-            img={""}
+            img={"frybeer"}
           />
         )}
         {this.state.gameFinished === true && this.state.playerWon === false && (
@@ -108,7 +109,7 @@ class Container extends Component {
             className="result"
             callback={this.getLeaderboard.bind(this)}
             win={"L'AMBASCIATORE DELLA SOBRIETÀ"}
-            img={""}
+            img={"beerrobot"}
           />
         )}
         {this.state.leaderboard === true && (

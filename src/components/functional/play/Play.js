@@ -41,14 +41,19 @@ function Play(props) {
   }
 
   return (
-    <>
-      <img src={gallery[player]} className={"image"} />
-      {winMap[winner][player]}
-      <br/>Il punteggio è: {props.playerWinsCount} a {props.comWinsCount}
-      <img src={gallery[com]} className={"image"} />
-      <br />
-      <Button callback={handleCallback} label={"Continua"} />
-    </>
+    <div>
+      <div className="play">
+        <img src={gallery[player]} className={"image"} />
+        {winMap[winner][player]}
+        <br />
+        Il punteggio è: {props.playerWinsCount} a {props.comWinsCount}
+        <img src={gallery[com]} className={"image"} />
+        <br />
+      </div>
+      <div className="soloButton">
+        <Button callback={handleCallback} label={"Continua"} />
+      </div>
+    </div>
   );
 }
 export default Play;

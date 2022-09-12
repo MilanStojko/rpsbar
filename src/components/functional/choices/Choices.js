@@ -1,4 +1,4 @@
-import './choices.css'
+import "./choices.css";
 
 function Choices(props) {
   function handleCallback() {
@@ -6,8 +6,9 @@ function Choices(props) {
   }
 
   return (
-    <div onClick={handleCallback} id={props.label} >
-      <img src={props.src} alt={""} className='image'/>
+    <div onClick={handleCallback} id={props.label} className="singleChoice">
+      <img src={props.src} alt={""} className="image" />
+      <p>{props.description}</p>
     </div>
   );
 }

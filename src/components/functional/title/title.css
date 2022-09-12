@@ -12,6 +12,7 @@
 .header{
     background-color: #fcdb7a;
     width: 100vw;
+    display: flex;
     justify-content: center;
     align-items: center;
 }

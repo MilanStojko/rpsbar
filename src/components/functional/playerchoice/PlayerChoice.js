@@ -3,17 +3,34 @@ import Beer from "../../../assets/media/img/Beer.png";
 import Wine from "../../../assets/media/img/Wine.png";
 import Cocktail from "../../../assets/media/img/Cocktail.png";
 
+import "./playerChoice.css";
+
 function PlayerChoice(props) {
   function handleCallback(label) {
     props.callback(label);
   }
 
   return (
-    <>
-      <Choices label="rock" callback={handleCallback} src={Beer} />
-      <Choices label="paper" callback={handleCallback} src={Wine} />
-      <Choices label="scissors" callback={handleCallback} src={Cocktail} />
-    </>
+    <div className="choice">
+      <Choices
+        label="rock"
+        callback={handleCallback}
+        src={Beer}
+        description={"Birretta"}
+      />
+      <Choices
+        label="paper"
+        callback={handleCallback}
+        src={Wine}
+        description={"Vinello"}
+      />
+      <Choices
+        label="scissors"
+        callback={handleCallback}
+        src={Cocktail}
+        description={"Negroni"}
+      />
+    </div>
   );
 }
 

@@ -1,9 +1,35 @@
 .image {
   display: flex;
   justify-content: center;
-  max-height: 200px;
 }
 
 .winnerLine{
     display:inline-block
+}
+.soloButton{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.play{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media screen and (min-width: 480px) {
+  .choice img{
+      max-width: 300px;
+  }
+}
+@media screen and (min-width: 600px) {
+ 
+}
+@media screen and (min-width: 800px) {
 }

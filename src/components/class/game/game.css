@@ -1,17 +1,8 @@
 @media screen and (min-width: 480px) {
   .game {
-    display: flex;
-    flex:1;
-    padding-left:500px;
+    flex-direction: column;
   }
 }
 
-.game {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  font-size: 30px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+
+

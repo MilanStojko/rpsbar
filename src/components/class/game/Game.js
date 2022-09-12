@@ -1,7 +1,7 @@
 import { Component } from "react";
 import PlayerChoice from "../../functional/playerchoice/PlayerChoice";
 import Play from "../../functional/play/Play";
-import './game.css'
+import "./game.css";
 
 class Game extends Component {
   constructor(props) {
@@ -116,11 +116,12 @@ class Game extends Component {
 
   render() {
     return (
-      <div className='game'>
+      <div>
         {this.state.displayPlay === false ? ( //SE NON VA POTREBBE ESSERE QUESTO
-          <PlayerChoice callback={this.handlePlayerChoice.bind(this)} />
+          <PlayerChoice className="choice" callback={this.handlePlayerChoice.bind(this)} />
         ) : (
           <Play
+            className="play"
             callback={this.handlePlay.bind(this)}
             player={this.playerPlay}
             com={this.comPlay}

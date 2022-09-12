@@ -1,0 +1,29 @@
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+img{
+    max-width: 300px;
+    max-height: 200px;
+    margin-bottom: 20px;
+}
+@media screen and (min-width: 480px) {
+    img{
+        max-width: 450px;
+        max-height: 300px;
+    }
+}
+@media screen and (min-width: 600px) {
+    img{
+        max-width: 500px;
+        max-height: 330px;
+    }
+}
+@media screen and (min-width: 800px) {
+    img{
+        max-width: 600px;
+        max-height: 430px;
+    }
+}
