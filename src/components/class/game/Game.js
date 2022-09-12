@@ -1,6 +1,7 @@
 import { Component } from "react";
 import PlayerChoice from "../../functional/playerchoice/PlayerChoice";
 import Play from "../../functional/play/Play";
+import './game.css'
 
 class Game extends Component {
   constructor(props) {
@@ -61,10 +62,10 @@ class Game extends Component {
     let state = this.state;
     this.playerPlay = label;
     this.getComPlay(this.comPlay);
-    console.log("Questo è comPlay", this.comPlay);
+    /*console.log("Questo è comPlay", this.comPlay);
     console.log(
       `Player gioca ${this.playerPlay}, il computer gioca ${this.comPlay}`
-    );
+    );*/
 
     this.playerWinsCount =
       this.playerWinsCount + this.rules[this.playerPlay][this.comPlay][1];
@@ -81,7 +82,6 @@ class Game extends Component {
     }
 
     if (this.playerWinsCount === 3) {
-      console.log("Player wins");
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
       this.playerWon = true;
@@ -117,7 +117,7 @@ class Game extends Component {
 
   render() {
     return (
-      <>
+      <div className='game'>
         {this.state.displayPlay === false ? ( //SE NON VA POTREBBE ESSERE QUESTO
           <PlayerChoice callback={this.handlePlayerChoice.bind(this)} />
         ) : (
@@ -126,9 +126,10 @@ class Game extends Component {
             player={this.playerPlay}
             com={this.comPlay}
             winner={this.winner}
+            playerName={this.props.playerName}
           />
         )}
-      </>
+      </div>
     );
   }
 }
