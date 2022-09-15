@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Combo&display=swap');
 *{
     box-sizing: border-box;
     margin: 0, auto;
@@ -13,4 +14,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-
+.fontStyle{
+    font-family: 'Combo', cursive !important;
+    
+}

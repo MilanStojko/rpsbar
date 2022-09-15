@@ -30,6 +30,7 @@ function Leaderboard(props) {
 
   return (
     <div className="table">
+      <h2>CLASSIFICA</h2>
       <div>
         {newLeaderboard !== [] &&
           newLeaderboard.map((element, key) => {
@@ -45,7 +46,7 @@ function Leaderboard(props) {
         </div>
       </div>
       <div className="restartButton">
-        <Button callback={restartGame} />
+        <Button callback={restartGame} label={"Torna alla home"} />
       </div>
     </div>
   );

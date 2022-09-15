@@ -6,9 +6,9 @@ function Input(props) {
   }
   return (
     <div className="dFlex">
-      <h2>{props.lable}</h2>
+      <h1 className="margin1">{props.lable}</h1>
       <input
-        className={"baseInput"}
+        className={"baseInput margin1"}
         id="name"
         name="name"
         type={props.type}

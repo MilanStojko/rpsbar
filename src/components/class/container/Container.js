@@ -89,7 +89,7 @@ class Container extends Component {
 
   render() {
     return (
-      <>
+      <div className="fontStyle">
         <Title className={"title"} />
         {this.state.homeView === true && (
           <Home className={"home"} callback={this.getName.bind(this)} />
@@ -124,7 +124,7 @@ class Container extends Component {
         )}
 
         <Footer />
-      </>
+      </div>
     );
   }
 

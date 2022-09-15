@@ -13,22 +13,22 @@ p {
 
 @media screen and (min-width: 480px) {
   img {
-    max-width: 300px;
-    max-height: 250px;
+    max-width: 250px;
+    max-height: 200px;
     font-size: 12px;
   }
 }
 @media screen and (min-width: 600px) {
   img {
-    max-width: 400px;
-    max-height: 300px;
+    max-width: 350px;
+    max-height: 250px;
     font-size: 16px;
   }
 }
 @media screen and (min-width: 800px) {
   img {
-    max-width: 500px;
-    max-height: 400px;
+    max-width: 450px;
+    max-height: 350px;
     font-size: 18px;
   }
 }

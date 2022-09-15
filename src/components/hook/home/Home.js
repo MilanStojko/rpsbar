@@ -25,6 +25,10 @@ function Home(props) {
         callback={getName}
       />
       <Button callback={sendName} label={"ALLA GUERRA"} />
+      <br></br>
+      <span>Regolamento</span>
+      <br></br>
+      <p>Vino > Birra,Negroni > Vino,Birra > negroni</p>
     </div>
   );
 }
