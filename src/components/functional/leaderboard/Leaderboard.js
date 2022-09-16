@@ -1,8 +1,11 @@
 import Button from "../button/Button";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./leaderboard.css";
 
-function Leaderboard(props) {
+function Leaderboard() {
+  let location= useLocation()
+  let navigate= useNavigate()
   let newLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
 
   function compare(a, b) {
@@ -17,7 +20,7 @@ function Leaderboard(props) {
   if (newLeaderboard !== []) newLeaderboard.sort(compare);
 
   function playerNow(element) {
-    if (element.name === props.playerNow) {
+    if (element.name === location.state.playerName) {
       return <span className="thisPlayer">{element.name}</span>;
     } else {
       return <span className="genericPlayer">{element.name}</span>;
@@ -25,7 +28,7 @@ function Leaderboard(props) {
   }
 
   function restartGame() {
-    props.callback();
+    navigate('/home')
   }
 
   return (

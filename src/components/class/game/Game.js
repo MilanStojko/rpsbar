@@ -2,6 +2,7 @@ import { Component } from "react";
 import PlayerChoice from "../../functional/playerchoice/PlayerChoice";
 import Play from "../../functional/play/Play";
 import "./game.css";
+import withRouter from "../../../routing/withNavigation.js";
 
 class Game extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Game extends Component {
     this.playerPlay = null;
     this.comPlay = null;
     this.playerWinsCount = 0;
-    this.comWinsCount = 0;
+    this.comWinsCount = 3;
     this.playerWon = "";
     this.winner = "";
     this.rules = {
@@ -32,7 +33,9 @@ class Game extends Component {
     };
 
     this.state = {
+      playerWins: 0,
       displayPlay: false,
+      playerWon: false,
     };
   }
 
@@ -56,6 +59,40 @@ class Game extends Component {
 
     flag = comRoll;
     this.comPlay = choices[comRoll];
+  }
+
+  getEndGame(win) {
+    let resolvePlayer = this.props.router.location.state.name; //prenditi da home il giocatore
+    let isAlreadyPresent = false; //se il player è già in classifica
+    let resolveWins = this.state.playerWins; //vittorie del giocatore
+    if (win === true) {
+      resolvePlayer = true;
+      resolveWins = 1;
+      let oldLeaderboard =
+        JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+      oldLeaderboard.map((element) => {
+        if (element.name === resolvePlayer) {
+          element.score = element.score + 1;
+          isAlreadyPresent = true;
+        }
+      });
+      if (!isAlreadyPresent) {
+        this.newPlayer = {
+          name: resolvePlayer,
+          score: resolveWins,
+        };
+        oldLeaderboard.push(this.newPlayer);
+      }
+
+      localStorage.setItem("leaderboard", JSON.stringify(oldLeaderboard));
+    }
+    this.setState({
+      playerWon: resolvePlayer,
+      playerWins: resolveWins,
+      insertedName: false,
+      gameFinished: true,
+    });
   }
 
   game(label = "scissors") {
@@ -85,15 +122,37 @@ class Game extends Component {
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
       this.playerWon = true;
-      this.props.callback(this.playerWon);
-      this.handlePlay();
+      //this.props.callback(this.playerWon);
+      //this.handlePlay();
+      this.props.router.navigate("/result", {
+        state: {
+          playerName: this.props.router.location.state.name,
+          className: "result",
+          win: "IL CAMPIONE BEVITORE",
+          img: "frybeer",
+        },
+      });
+
+      /*<Result
+            className={"result"}
+            callback={}
+            label={"vai alla leaderboard"}
+            win={"IL CAMPIONE BEVITORE"}
+            img={"frybeer"}
+          />*/
     } else if (this.comWinsCount === 3) {
       this.playerWinsCount = 0;
       this.comWinsCount = 0;
       this.playerWon = false;
-      this.props.callback(this.playerWon);
-      this.handlePlay();
-    } else {
+      //this.props.callback(this.playerWon);
+      //this.handlePlay();
+      this.props.router.navigate("/result", {
+        state: {
+          className: "result",
+          win: "L'AMBASCIATORE DELLA SOBRIETÀ",
+          img: "beerrobot",
+        },
+      });
     }
     state.displayPlay = true;
     this.setState(state);
@@ -118,7 +177,10 @@ class Game extends Component {
     return (
       <div>
         {this.state.displayPlay === false ? ( //SE NON VA POTREBBE ESSERE QUESTO
-          <PlayerChoice className="choice" callback={this.handlePlayerChoice.bind(this)} />
+          <PlayerChoice
+            className="choice"
+            callback={this.handlePlayerChoice.bind(this)}
+          />
         ) : (
           <Play
             className="play"
@@ -136,4 +198,4 @@ class Game extends Component {
   }
 }
 
-export default Game;
+export default withRouter(Game);

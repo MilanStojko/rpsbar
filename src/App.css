@@ -3,3 +3,25 @@
 .App{
     font-family: 'Combo', cursive;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Combo&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0, auto;
+}
+body{
+    background-color: #70877f;
+}
+
+.home{
+    margin-bottom :40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.fontStyle{
+    font-family: 'Combo', cursive !important;
+    
+}
+

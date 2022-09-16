@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Route, Routes } from "react-router-dom";
 
 //import di componenenti
 import Home from "../../hook/home/Home";
@@ -7,6 +8,7 @@ import Game from "../game/Game";
 import Result from "../../functional/result/Result";
 import Leaderboard from "../../functional/leaderboard/Leaderboard";
 import Footer from "../../functional/footer/Footer";
+import withRouter from "../../../routing/withNavigation.js";
 
 //import di css
 import "./container.css";

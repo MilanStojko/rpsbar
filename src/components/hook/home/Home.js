@@ -1,20 +1,26 @@
 import Input from "../../functional/Input/Input";
 import Button from "../../functional/button/Button";
+import { useNavigate } from "react-router-dom";
 
 import "./home.css";
 
-function Home(props) {
+function Home() {
+  let navigate = useNavigate()
   let newName = "";
+
+  function goToGame(){
+    navigate('/game', {state:{name:newName}})
+  }
 
   function getName(event) {
     newName = event.target.value;
     console.log(newName);
-    return newName;
   }
-
+/*
   function sendName() {
     props.callback(newName);
   }
+*/
 
   return (
     <div className="home">
@@ -24,11 +30,8 @@ function Home(props) {
         type={"text"}
         callback={getName}
       />
-      <Button callback={sendName} label={"ALLA GUERRA"} />
-      <br></br>
-      <span>Regolamento</span>
-      <br></br>
-      <p>Vino > Birra,Negroni > Vino,Birra > negroni</p>
+      <Button callback={goToGame} label={"ALLA GUERRA"} />
+
     </div>
   );
 }
